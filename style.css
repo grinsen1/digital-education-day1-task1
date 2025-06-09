@@ -1377,17 +1377,19 @@ select.form-control {
 }
 
 .table-container {
-  overflow-x: auto;
+  overflow-x: visible;
   margin-bottom: var(--space-32);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
 }
 
 .data-table {
-  width: 100%;
+  width: max-content;
+  min-width: 100%;
   border-collapse: collapse;
   background-color: var(--color-surface);
   font-size: var(--font-size-sm);
+  table-layout: auto;
 }
 
 .data-table th,
@@ -1554,5 +1556,17 @@ select.form-control {
 }
 
 
+body {
+  overflow-x: auto;
+  min-width: max-content;
+}
 
+.app-container {
+  min-width: max-content;
+}
+
+.container {
+  max-width: none;
+  width: auto;
+}
 
