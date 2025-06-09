@@ -1,1 +1,166 @@
-11
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Медиапланирование</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <div class="container">
+                <h1>Медиапланирование</h1>
+                <nav class="main-nav">
+                    <ul class="nav-list">
+                        <li><a href="#" class="nav-link" data-section="home">Главная</a></li>
+                        <li><a href="#" class="nav-link" data-section="learning">Обучение</a></li>
+                        <li><a href="#" class="nav-link" data-section="tasks">Задания</a></li>
+                        <li><a href="#" class="nav-link" data-section="database">База данных</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <main class="app-content">
+            <div class="container">
+                <!-- Главная секция -->
+                <section id="home" class="app-section">
+                    <h2>Добро пожаловать в систему медиапланирования</h2>
+                    <p>Выберите раздел для начала работы.</p>
+                    <div class="section-cards">
+                        <div class="card">
+                            <div class="card__body">
+                                <h3>Обучение</h3>
+                                <p>Изучите теоретические материалы по медиапланированию.</p>
+                                <a href="#" class="btn btn--primary" data-section-link="learning">Перейти к обучению</a>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card__body">
+                                <h3>Задания</h3>
+                                <p>Выполните практические задания по медиапланированию.</p>
+                                <a href="#" class="btn btn--primary" data-section-link="tasks">Перейти к заданиям</a>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card__body">
+                                <h3>База данных</h3>
+                                <p>Просмотрите и работайте с базой рекламных площадок.</p>
+                                <a href="#" class="btn btn--primary" data-section-link="database">Перейти к базе данных</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Секция обучения -->
+                <section id="learning" class="app-section hidden">
+                    <h2>Обучение</h2>
+                    <div class="card">
+                        <div class="card__body">
+                            <h3>Материалы по медиапланированию</h3>
+                            <p>Здесь будут размещены обучающие материалы.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Секция заданий -->
+                <section id="tasks" class="app-section hidden">
+                    <h2>Задания</h2>
+                    <div class="card">
+                        <div class="card__body">
+                            <h3>Задание по медиапланированию</h3>
+                            <p>Описание задания будет здесь.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Секция базы данных -->
+                <section id="database" class="app-section hidden">
+                    <h2>База данных рекламных площадок</h2>
+                    
+                    <div class="database-actions">
+                        <div class="search-box">
+                            <input type="text" id="searchInput" class="form-control" placeholder="Поиск по таблице...">
+                        </div>
+                        <div class="filter-actions">
+                            <select id="categoryFilter" class="form-control">
+                                <option value="all">Все категории</option>
+                                <option value="OLV">OLV</option>
+                                <option value="Social Network">Social Network</option>
+                                <option value="Banners Network">Banners Network</option>
+                                <option value="E-commerce">E-commerce</option>
+                                <option value="PROGRAMMATIC">PROGRAMMATIC</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="table-container">
+                        <table id="platformsTable" class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>№ п/п</th>
+                                    <th>Категория</th>
+                                    <th>Сайт</th>
+                                    <th>Формат</th>
+                                    <th>Единица закупки</th>
+                                    <th>Стоимость за единицу</th>
+                                    <th>CPM</th>
+                                    <th>CTR%</th>
+                                    <th>CPC</th>
+                                    <th>VTR%</th>
+                                    <th>CPV</th>
+                                    <th>Частота</th>
+                                    <th>CPT</th>
+                                    <th>PI</th>
+                                    <th>CPVisit</th>
+                                    <th>CPA</th>
+                                    <th>% отказов</th>
+                                    <th>Запуск нового продукта</th>
+                                    <th>Продукт хорошо известен</th>
+                                    <th>Подсказки</th>
+                                </tr>
+                            </thead>
+                            <tbody id="platformsTableBody">
+                                <!-- Данные будут загружены из JS -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Блок информации о группе и обоснования -->
+                    <div class="group-info-section">
+                        <h3>Информация о группе и обоснование</h3>
+                        <div class="card">
+                            <div class="card__body">
+                                <form id="groupInfoForm">
+                                    <div class="form-group">
+                                        <label for="groupName" class="form-label">Имя группы / ФИО</label>
+                                        <input type="text" id="groupName" name="groupName" class="form-control" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="justification" class="form-label">Обоснование выбора площадок</label>
+                                        <textarea id="justification" name="justification" class="form-control" rows="5" required></textarea>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="submit-section">
+                        <button id="submitSolution" class="btn btn--primary">Отправить решение</button>
+                        <div id="submitStatus" class="status-message mt-8 hidden"></div>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <footer class="app-footer">
+            <div class="container">
+                <p>&copy; 2025 Медиапланирование</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

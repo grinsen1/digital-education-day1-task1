@@ -1,0 +1,743 @@
+// Конфигурация приложения
+const CONFIG = {
+    webAppUrl: "https://script.google.com/macros/s/AKfycbx0PIK1J57tuVVL_crKpprc8GFSJ9WlPM7HgOl4IZjXoBWvTCNQlw-6NrQetIT0rpfS/exec"
+};
+
+// Данные площадок
+const PLATFORMS_DATA = [
+    {
+        "п/п": 1,
+        "Категория": "OLV",
+        "Сайт": "MyTarget",
+        "Формат": "In- stream video (Pre-roll (1920x1080))",
+        "Единица закупки": "CPM",
+        "Стоимость за единицу": 240.0,
+        "CPM": 240.0,
+        "CTR%": 0.01,
+        "CPC": 24.0,
+        "VTR%": 0.55,
+        "CPV": 0.43636363636363634,
+        "Частота": 2.2,
+        "CPT": 528.0,
+        "PI": 0.41,
+        "CPVisit": 40.0,
+        "CPA": 100000.0,
+        "Процент отказов": 0.35
+    },
+    {
+        "п/п": 2,
+        "Категория": "OLV", 
+        "Сайт": "Yandex.ru//Видеосеть",
+        "Формат": "In- stream video (Pre-roll (1920x1080))",
+        "Единица закупки": "CPM",
+        "Стоимость за единицу": 100.0,
+        "CPM": 100.0,
+        "CTR%": 0.008,
+        "CPC": 12.5,
+        "VTR%": 0.35,
+        "CPV": 0.2857142857142857,
+        "Частота": 2.5,
+        "CPT": 250.0,
+        "PI": 0.39,
+        "CPVisit": 19.23076923076923,
+        "CPA": 111230.76923076923,
+        "Процент отказов": 0.35
+    },
+    {
+        "п/п": 3,
+        "Категория": "OLV",
+        "Сайт": "RuTube.ru",
+        "Формат": "In- stream video (Pre-roll (1920x1080))",
+        "Единица закупки": "CPM",
+        "Стоимость за единицу": 1200.0,
+        "CPM": 245.99999999999994,
+        "CTR%": 0.017,
+        "CPC": 14.470588235294114,
+        "VTR%": 0.8,
+        "CPV": 0.30749999999999994,
+        "Частота": 3.0,
+        "CPT": 737.9999999999999,
+        "PI": 0.39,
+        "CPVisit": 24.117647058823525,
+        "CPA": 241176.47058823524,
+        "Процент отказов": 0.35
+    },
+    {
+        "п/п": 4,
+        "Категория": "OLV",
+        "Сайт": "Kinopoisk.ru",
+        "Формат": "In- stream video (Pre-roll (1920x1080))",
+        "Единица закупки": "CPM",
+        "Стоимость за единицу": 287.36,
+        "CPM": 287.36,
+        "CTR%": 0.01,
+        "CPC": 28.736,
+        "VTR%": 0.7,
+        "CPV": 0.4105142857142857,
+        "Частота": 2.5,
+        "CPT": 718.4000000000001,
+        "PI": 0.39,
+        "CPVisit": 44.20923076923077,
+        "CPA": 442092.3076923077,
+        "Процент отказов": 0.35
+    },
+    {
+        "п/п": 5,
+        "Категория": "OLV",
+        "Сайт": "Youtube.com",
+        "Формат": "In- stream video (Pre-roll (1920x1080))",
+        "Единица закупки": "Пакет",
+        "Стоимость за единицу": 550000,
+        "CPM": 366.66666666666663,
+        "CTR%": 0.005,
+        "CPC": 73.33333333333333,
+        "VTR%": null,
+        "CPV": 0.36666666666666664,
+        "Частота": null,
+        "CPT": null,
+        "PI": 0.37,
+        "CPVisit": 122.22222222222223,
+        "CPA": 1222222.2222222222,
+        "Процент отказов": 0.35
+    },
+    {
+        "п/п": 6,
+        "Категория": "Social Network",
+        "Сайт": "vk.com",
+        "Формат": "Реклама сайта (1080×607)",
+        "Единица закупки": "CPM",
+        "Стоимость за единицу": 80,
+        "CPM": 80,
+        "CTR%": 0.0012,
+        "CPC": 66.66666666666667,
+        "VTR%": null,
+        "CPV": null,
+        "Частота": 2.5,
+        "CPT": 200,
+        "PI": 0.37,
+        "CPVisit": 133.33333333333334,
+        "CPA": 26666.666666666668,
+        "Процент отказов": 0.35
+    },
+    {
+        "п/п": 7,
+        "Категория": "Social Network",
+        "Сайт": "vk.com",
+        "Формат": "Реклама сайта (1080×607)",
+        "Единица закупки": "CPM",
+        "Стоимость за единицу": 80,
+        "CPM": 80,
+        "CTR%": 0.0012,
+        "CPC": 66.66666666666667,
+        "VTR%": null,
+        "CPV": null,
+        "Частота": 2.5,
+        "CPT": 200,
+        "PI": 0.35,
+        "CPVisit": 133.33333333333334,
+        "CPA": 44444.444444444445,
+        "Процент отказов": 0.35
+    },
+    {
+        "п/п": 8,
+        "Категория": "Social Network",
+        "Сайт": "Telegram Ads",
+        "Формат": "Текст в мессенджере",
+        "Единица закупки": "CPM",
+        "Стоимость за единицу": 210.1786,
+        "CPM": 210.17859999999996,
+        "CTR%": 0.011,
+        "CPC": 19.107145454545453,
+        "VTR%": null,
+        "CPV": null,
+        "Частота": null,
+        "CPT": null,
+        "PI": 0.37,
+        "CPVisit": 29.395608391608388,
+        "CPA": 36744.51048951048,
+        "Процент отказов": 0.35
+    },
+    {
+        "п/п": 9,
+        "Категория": "Social Network",
+        "Сайт": "Telegram Ads",
+        "Формат": "Премиум формат",
+        "Единица закупки": "CPM",
+        "Стоимость за единицу": 401.95470000000006,
+        "CPM": 401.95470000000006,
+        "CTR%": 0.0125,
+        "CPC": 32.15637600000001,
+        "VTR%": null,
+        "CPV": null,
+        "Частота": null,
+        "CPT": null,
+        "PI": 0.37,
+        "CPVisit": 45.93768000000001,
+        "CPA": 32812.62857142858,
+        "Процент отказов": 0.35
+    },
+    {
+        "п/п": 10,
+        "Категория": "Banners Network",
+        "Сайт": "MyTarget",
+        "Формат": "Multiformat (1080×607, 600x600)",
+        "Единица закупки": "CPM",
+        "Стоимость за единицу": 80,
+        "CPM": 80,
+        "CTR%": 0.0017,
+        "CPC": 47.05882352941177,
+        "VTR%": null,
+        "CPV": null,
+        "Частота": 3,
+        "CPT": 240.00000000000003,
+        "PI": 0.36,
+        "CPVisit": 85.5614973262032,
+        "CPA": 17112.299465240638,
+        "Процент отказов": 0.35
+    },
+    {
+        "п/п": 11,
+        "Категория": "Banners Network",
+        "Сайт": "MyTarget",
+        "Формат": "Multiformat (1080×607, 600x600)",
+        "Единица закупки": "CPC",
+        "Стоимость за единицу": 80,
+        "CPM": 176.00000000000003,
+        "CTR%": 0.0022,
+        "CPC": 80,
+        "VTR%": null,
+        "CPV": null,
+        "Частота": 3,
+        "CPT": 528,
+        "PI": 0.36,
+        "CPVisit": 133.33333333333334,
+        "CPA": 44444.444444444445,
+        "Процент отказов": 0.35
+    },
+    {
+        "п/п": 12,
+        "Категория": "Banners Network",
+        "Сайт": "Yandex.ru//Display",
+        "Формат": "Banners (240×400, 300×250, 300×500, 300×600, 320×480, 336×280, 380×320, 728х90, 970×250)",
+        "Единица закупки": "CPM",
+        "Стоимость за единицу": 35,
+        "CPM": 35,
+        "CTR%": 0.0018,
+        "CPC": 19.444444444444443,
+        "VTR%": null,
+        "CPV": null,
+        "Частота": 3,
+        "CPT": 105.00000000000001,
+        "PI": 0.37,
+        "CPVisit": 35.35353535353535,
+        "CPA": 11784.511784511784,
+        "Процент отказов": 0.35
+    },
+    {
+        "п/п": 13,
+        "Категория": "Banners Network",
+        "Сайт": "Yandex.ru//Display",
+        "Формат": "Banners (240×400, 300×250, 300×500, 300×600, 320×480, 336×280, 380×320, 728х90, 970×250)",
+        "Единица закупки": "CPC",
+        "Стоимость за единицу": 35,
+        "CPM": 77,
+        "CTR%": 0.0022,
+        "CPC": 35,
+        "VTR%": null,
+        "CPV": null,
+        "Частота": 3,
+        "CPT": 230.99999999999997,
+        "PI": 0.36,
+        "CPVisit": 58.333333333333336,
+        "CPA": 29166.666666666668,
+        "Процент отказов": 0.35
+    },
+    {
+        "п/п": 14,
+        "Категория": "Banners Network",
+        "Сайт": "Iphones.ru",
+        "Формат": "Верхняя растяжка  1100х250 + 1100х400",
+        "Единица закупки": "CPM",
+        "Стоимость за единицу": 680,
+        "CPM": 185.45455040000002,
+        "CTR%": 0.0019,
+        "CPC": 97.60765810526317,
+        "VTR%": null,
+        "CPV": null,
+        "Частота": 1.5,
+        "CPT": 278.18182559999997,
+        "PI": 0.41,
+        "CPVisit": 203.34928771929827,
+        "CPA": 67783.09590643276,
+        "Процент отказов": 0.35
+    },
+    {
+        "п/п": 16,
+        "Категория": "Banners Network",
+        "Сайт": "Kommersant.ru",
+        "Формат": "970х250, 600х250, 300х250",
+        "Единица закупки": "CPM",
+        "Стоимость за единицу": 800,
+        "CPM": 175.99999999999997,
+        "CTR%": 0.002,
+        "CPC": 87.99999999999999,
+        "VTR%": null,
+        "CPV": null,
+        "Частота": 2,
+        "CPT": 351.99999999999994,
+        "PI": 0.41,
+        "CPVisit": 175.99999999999997,
+        "CPA": 117333.33333333331,
+        "Процент отказов": 0.35
+    },
+    {
+        "п/п": 17,
+        "Категория": "Banners Network",
+        "Сайт": "RBC.ru",
+        "Формат": "300х600 + 300x250",
+        "Единица закупки": "CPM",
+        "Стоимость за единицу": 1147.5,
+        "CPM": 206.55000000000007,
+        "CTR%": 0.0012,
+        "CPC": 172.12500000000006,
+        "VTR%": null,
+        "CPV": null,
+        "Частота": 2,
+        "CPT": 413.10000000000014,
+        "PI": 0.41,
+        "CPVisit": 286.87500000000006,
+        "CPA": 191250.00000000003,
+        "Процент отказов": 0.35
+    },
+    {
+        "п/п": 18,
+        "Категория": "E-commerce",
+        "Сайт": "Ozon.ru",
+        "Формат": "Баннер на главной",
+        "Единица закупки": "CPM",
+        "Стоимость за единицу": 230,
+        "CPM": 230,
+        "CTR%": 0.004,
+        "CPC": 57.5,
+        "VTR%": null,
+        "CPV": null,
+        "Частота": 3,
+        "CPT": 690.0000000000001,
+        "PI": 0.37,
+        "CPVisit": 104.54545454545455,
+        "CPA": 26136.363636363636,
+        "Процент отказов": 0.35
+    },
+    {
+        "п/п": 19,
+        "Категория": "PROGRAMMATIC",
+        "Сайт": "Soloway",
+        "Формат": "Баннеры (120x600, 160x600, 240x400, 240x600, 300x250, 300x300, 300x500, 300x600, 320x480, 336x280, 970x250)",
+        "Единица закупки": "CPM",
+        "Стоимость за единицу": 90,
+        "CPM": 90,
+        "CTR%": 0.0022,
+        "CPC": 40.90909090909091,
+        "VTR%": null,
+        "CPV": null,
+        "Частота": 3,
+        "CPT": 269.99999999999994,
+        "PI": 0.37,
+        "CPVisit": 74.38016528925618,
+        "CPA": 24793.388429752064,
+        "Процент отказов": 0.35
+    }
+];
+
+// Карта подсказок
+const HINTS_MAP = {
+    "1": "знание",
+    "2": "знание", 
+    "3": "знание",
+    "4": "знание",
+    "5": "знание",
+    "14": "знание",
+    "16": "знание",
+    "17": "знание",
+    "6": "продажи",
+    "8": "продажи",
+    "11": "продажи",
+    "13": "продажи",
+    "18": "продажи",
+    "19": "продажи",
+    "7": "знание+продажи",
+    "9": "знание+продажи",
+    "10": "знание+продажи",
+    "12": "знание+продажи"
+};
+
+// Глобальные переменные
+let currentPlatforms = [...PLATFORMS_DATA];
+let platformStates = {};
+
+// Инициализация приложения
+document.addEventListener('DOMContentLoaded', function() {
+    try {
+        initializeApp();
+    } catch (error) {
+        console.error('Ошибка инициализации приложения:', error);
+    }
+});
+
+function initializeApp() {
+    initializePlatformStates();
+    setupNavigation();
+    setupTableFunctionality();
+    setupFormHandlers();
+    
+    // Показать главную страницу по умолчанию
+    showSection('home');
+}
+
+// Инициализация состояний площадок
+function initializePlatformStates() {
+    PLATFORMS_DATA.forEach(platform => {
+        const id = platform['п/п'];
+        platformStates[id] = {
+            newProduct: false,
+            knownProduct: false,
+            hintShown: false
+        };
+    });
+}
+
+// Настройка навигации
+function setupNavigation() {
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sectionLinks = document.querySelectorAll('[data-section-link]');
+    
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const section = link.getAttribute('data-section');
+            if (section) {
+                showSection(section);
+                updateActiveNav(link);
+            }
+        });
+    });
+    
+    sectionLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const section = link.getAttribute('data-section-link');
+            if (section) {
+                showSection(section);
+                updateActiveNavBySection(section);
+            }
+        });
+    });
+}
+
+function showSection(sectionId) {
+    try {
+        // Скрыть все секции
+        const sections = document.querySelectorAll('.app-section');
+        sections.forEach(section => section.classList.add('hidden'));
+        
+        // Показать нужную секцию
+        const targetSection = document.getElementById(sectionId);
+        if (targetSection) {
+            targetSection.classList.remove('hidden');
+            
+            // Если это база данных, рендерим таблицу
+            if (sectionId === 'database') {
+                renderTable();
+            }
+        }
+    } catch (error) {
+        console.error('Ошибка при переключении секции:', error);
+    }
+}
+
+function updateActiveNav(activeLink) {
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(link => link.classList.remove('active'));
+    activeLink.classList.add('active');
+}
+
+function updateActiveNavBySection(sectionId) {
+    const targetLink = document.querySelector(`[data-section="${sectionId}"]`);
+    if (targetLink) {
+        updateActiveNav(targetLink);
+    }
+}
+
+// Настройка функциональности таблицы
+function setupTableFunctionality() {
+    const searchInput = document.getElementById('searchInput');
+    const categoryFilter = document.getElementById('categoryFilter');
+    
+    if (searchInput) {
+        searchInput.addEventListener('input', handleSearch);
+    }
+    
+    if (categoryFilter) {
+        categoryFilter.addEventListener('change', handleCategoryFilter);
+    }
+}
+
+function handleSearch() {
+    try {
+        const searchInput = document.getElementById('searchInput');
+        if (!searchInput) return;
+        
+        const searchTerm = searchInput.value.toLowerCase();
+        
+        if (searchTerm === '') {
+            currentPlatforms = [...PLATFORMS_DATA];
+        } else {
+            currentPlatforms = PLATFORMS_DATA.filter(platform => {
+                return Object.values(platform).some(value => 
+                    value !== null && value.toString().toLowerCase().includes(searchTerm)
+                );
+            });
+        }
+        
+        renderTable();
+    } catch (error) {
+        console.error('Ошибка поиска:', error);
+    }
+}
+
+function handleCategoryFilter() {
+    try {
+        const categoryFilter = document.getElementById('categoryFilter');
+        if (!categoryFilter) return;
+        
+        const selectedCategory = categoryFilter.value;
+        
+        if (selectedCategory === 'all') {
+            currentPlatforms = [...PLATFORMS_DATA];
+        } else {
+            currentPlatforms = PLATFORMS_DATA.filter(platform => 
+                platform['Категория'] === selectedCategory
+            );
+        }
+        
+        renderTable();
+    } catch (error) {
+        console.error('Ошибка фильтрации:', error);
+    }
+}
+
+// Рендеринг таблицы
+function renderTable() {
+    try {
+        const tbody = document.getElementById('platformsTableBody');
+        if (!tbody) return;
+        
+        tbody.innerHTML = '';
+        
+        currentPlatforms.forEach(platform => {
+            const row = createTableRow(platform);
+            tbody.appendChild(row);
+        });
+    } catch (error) {
+        console.error('Ошибка рендеринга таблицы:', error);
+    }
+}
+
+function createTableRow(platform) {
+    const row = document.createElement('tr');
+    const id = platform['п/п'];
+    
+    // Основные данные
+    const columns = [
+        'п/п', 'Категория', 'Сайт', 'Формат', 'Единица закупки', 
+        'Стоимость за единицу', 'CPM', 'CTR%', 'CPC', 'VTR%', 
+        'CPV', 'Частота', 'CPT', 'PI', 'CPVisit', 'CPA', 'Процент отказов'
+    ];
+    
+    columns.forEach(col => {
+        const cell = document.createElement('td');
+        let value = platform[col];
+        
+        if (value === null) {
+            value = '-';
+        } else if (typeof value === 'number') {
+            value = formatNumber(value);
+        }
+        
+        cell.textContent = value;
+        row.appendChild(cell);
+    });
+    
+    // Чекбокс "Запуск нового продукта"
+    const newProductCell = document.createElement('td');
+    newProductCell.className = 'checkbox-cell';
+    const newProductCheckbox = document.createElement('input');
+    newProductCheckbox.type = 'checkbox';
+    newProductCheckbox.checked = platformStates[id].newProduct;
+    newProductCheckbox.addEventListener('change', () => {
+        platformStates[id].newProduct = newProductCheckbox.checked;
+    });
+    newProductCell.appendChild(newProductCheckbox);
+    row.appendChild(newProductCell);
+    
+    // Чекбокс "Продукт хорошо известен"
+    const knownProductCell = document.createElement('td');
+    knownProductCell.className = 'checkbox-cell';
+    const knownProductCheckbox = document.createElement('input');
+    knownProductCheckbox.type = 'checkbox';
+    knownProductCheckbox.checked = platformStates[id].knownProduct;
+    knownProductCheckbox.addEventListener('change', () => {
+        platformStates[id].knownProduct = knownProductCheckbox.checked;
+    });
+    knownProductCell.appendChild(knownProductCheckbox);
+    row.appendChild(knownProductCell);
+    
+    // Колонка подсказок
+    const hintCell = document.createElement('td');
+    if (platformStates[id].hintShown) {
+        const hintDisplay = document.createElement('div');
+        hintDisplay.className = 'hint-display';
+        hintDisplay.textContent = HINTS_MAP[id] || 'Нет подсказки';
+        hintCell.appendChild(hintDisplay);
+    } else {
+        const hintLink = document.createElement('a');
+        hintLink.className = 'hint-link';
+        hintLink.textContent = 'подсказать';
+        hintLink.href = '#';
+        hintLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            showHint(id);
+        });
+        hintCell.appendChild(hintLink);
+    }
+    row.appendChild(hintCell);
+    
+    return row;
+}
+
+function formatNumber(num) {
+    if (num >= 1000) {
+        return num.toLocaleString('ru-RU');
+    }
+    return num.toString();
+}
+
+function showHint(platformId) {
+    platformStates[platformId].hintShown = true;
+    renderTable();
+}
+
+// Настройка обработчиков форм
+function setupFormHandlers() {
+    const submitButton = document.getElementById('submitSolution');
+    if (submitButton) {
+        submitButton.addEventListener('click', handleSubmit);
+    }
+}
+
+async function handleSubmit() {
+    try {
+        const groupName = document.getElementById('groupName').value.trim();
+        const justification = document.getElementById('justification').value.trim();
+        
+        if (!groupName || !justification) {
+            showStatusMessage('Пожалуйста, заполните все обязательные поля.', 'error');
+            return;
+        }
+        
+        // Собираем данные для отправки
+        const submissionData = {
+            groupName: groupName,
+            justification: justification,
+            platforms: [],
+            timestamp: new Date().toISOString()
+        };
+        
+        // Добавляем данные о выбранных площадках
+        PLATFORMS_DATA.forEach(platform => {
+            const id = platform['п/п'];
+            const state = platformStates[id];
+            
+            if (state.newProduct || state.knownProduct) {
+                submissionData.platforms.push({
+                    id: id,
+                    site: platform['Сайт'],
+                    category: platform['Категория'],
+                    newProduct: state.newProduct,
+                    knownProduct: state.knownProduct,
+                    hint: state.hintShown ? HINTS_MAP[id] : null
+                });
+            }
+        });
+        
+        // Показываем состояние загрузки
+        const submitButton = document.getElementById('submitSolution');
+        const originalText = submitButton.textContent;
+        submitButton.textContent = 'Отправка...';
+        submitButton.disabled = true;
+        
+        try {
+            const response = await fetch(CONFIG.webAppUrl, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(submissionData)
+            });
+            
+            showStatusMessage('Данные успешно отправлены!', 'success');
+            clearForm();
+            
+        } catch (error) {
+            console.error('Ошибка отправки:', error);
+            showStatusMessage('Произошла ошибка при отправке данных. Пожалуйста, попробуйте еще раз.', 'error');
+        } finally {
+            submitButton.textContent = originalText;
+            submitButton.disabled = false;
+        }
+    } catch (error) {
+        console.error('Ошибка в handleSubmit:', error);
+        showStatusMessage('Произошла неожиданная ошибка.', 'error');
+    }
+}
+
+function showStatusMessage(message, type = 'info') {
+    const statusElement = document.getElementById('submitStatus');
+    if (statusElement) {
+        statusElement.textContent = message;
+        statusElement.className = `status-message mt-8 status--${type}`;
+        statusElement.classList.remove('hidden');
+        
+        // Автоскрытие через 5 секунд
+        setTimeout(() => {
+            statusElement.classList.add('hidden');
+        }, 5000);
+    }
+}
+
+function clearForm() {
+    const groupNameField = document.getElementById('groupName');
+    const justificationField = document.getElementById('justification');
+    
+    if (groupNameField) groupNameField.value = '';
+    if (justificationField) justificationField.value = '';
+    
+    // Сбрасываем состояния площадок
+    Object.keys(platformStates).forEach(id => {
+        platformStates[id] = {
+            newProduct: false,
+            knownProduct: false,
+            hintShown: false
+        };
+    });
+    
+    renderTable();
+}
+
+// Экспорт для использования в других модулях (если нужно)
+window.MediaPlanningApp = {
+    showSection,
+    renderTable,
+    showStatusMessage
+};
