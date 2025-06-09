@@ -1364,3 +1364,160 @@ body {
         height: 35px;
     }
 }
+/* Стили для блока обучения */
+.training-section {
+    margin-bottom: var(--space-40);
+}
+
+.section-title {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text);
+    margin-bottom: var(--space-24);
+    border-bottom: 2px solid var(--color-primary);
+    padding-bottom: var(--space-8);
+}
+
+/* Карточки типов кампаний */
+.campaign-type-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--space-24);
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.campaign-type-header {
+    padding: var(--space-16);
+    color: white;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-hover));
+}
+
+.campaign-type-header.imijnyie {
+    background: linear-gradient(135deg, #9c27b0, #673ab7);
+}
+
+.campaign-type-header.produktovye {
+    background: linear-gradient(135deg, var(--color-primary), #2e7d32);
+}
+
+.campaign-type-header.prodayushchie {
+    background: linear-gradient(135deg, #1565c0, #0d47a1);
+}
+
+.campaign-type-title {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    margin: 0 0 var(--space-4) 0;
+}
+
+.campaign-goal {
+    font-size: var(--font-size-sm);
+    opacity: 0.9;
+}
+
+.campaign-content {
+    padding: var(--space-20);
+}
+
+.campaign-content > div {
+    margin-bottom: var(--space-16);
+}
+
+.campaign-content > div:last-child {
+    margin-bottom: 0;
+}
+
+.campaign-content ul {
+    margin: var(--space-8) 0;
+    padding-left: var(--space-20);
+}
+
+.campaign-content li {
+    margin-bottom: var(--space-4);
+    line-height: var(--line-height-normal);
+}
+
+/* Критерии выбора */
+.criteria-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-20);
+}
+
+.criteria-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-20);
+}
+
+.criteria-title {
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-primary);
+    margin: 0 0 var(--space-12) 0;
+}
+
+.criteria-list {
+    margin: 0;
+    padding-left: var(--space-16);
+}
+
+.criteria-list li {
+    margin-bottom: var(--space-8);
+    line-height: var(--line-height-normal);
+}
+
+/* Quick Tips */
+.tips-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-20);
+}
+
+.tip-card {
+    background: var(--color-secondary);
+    border: 1px solid var(--color-primary);
+    border-left: 4px solid var(--color-primary);
+    border-radius: var(--radius-md);
+    padding: var(--space-20);
+}
+
+.tip-title {
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-primary);
+    margin: 0 0 var(--space-12) 0;
+}
+
+.tip-content {
+    margin: 0 0 var(--space-12) 0;
+    line-height: var(--line-height-normal);
+}
+
+.tip-list {
+    margin: var(--space-8) 0 0 0;
+    padding-left: var(--space-16);
+}
+
+.tip-list li {
+    margin-bottom: var(--space-6);
+    line-height: var(--line-height-normal);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .criteria-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .campaign-type-header {
+        padding: var(--space-12);
+    }
+    
+    .campaign-content {
+        padding: var(--space-16);
+    }
+}
