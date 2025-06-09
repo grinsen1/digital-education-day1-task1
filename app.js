@@ -1,6 +1,6 @@
 // Конфигурация приложения
 const CONFIG = {
-    webAppUrl: "https://script.google.com/macros/s/AKfycbz41O-_2bW-YPsbzb7npO6FcdeEiLhWVbgEn_-1aIZzI6Gu2TAHkYKJvieuqTeqEey7qQ/exec"
+    webAppUrl: "https://script.google.com/macros/s/AKfycbzfj-enseMQieNmM2oUi4UwKnxdOmqHygnnnlN1jhyOexoSFZ7LB7rvjgGE_IDycKUq1Q/exec"
 };
 
 // Данные площадок
@@ -646,29 +646,43 @@ async function handleSubmit() {
         }
         
         // Собираем данные для отправки
-        const submissionData = {
-            groupName: groupName,
-            justification: justification,
-            platforms: [],
-            timestamp: new Date().toISOString()
-        };
+const submissionData = {
+    groupName: groupName,
+    justification: justification,
+    platforms: [],
+    newProductLaunchPlatforms: [],
+    wellKnownProductPlatforms: [],
+    selectedHints: [],
+    timestamp: new Date().toISOString()
+};
         
         // Добавляем данные о выбранных площадках
-        PLATFORMS_DATA.forEach(platform => {
-            const id = platform['п/п'];
-            const state = platformStates[id];
-            
-            if (state.newProduct || state.knownProduct) {
-                submissionData.platforms.push({
-                    id: id,
-                    site: platform['Сайт'],
-                    category: platform['Категория'],
-                    newProduct: state.newProduct,
-                    knownProduct: state.knownProduct,
-                    hint: state.hintShown ? HINTS_MAP[id] : null
-                });
-            }
+PLATFORMS_DATA.forEach(platform => {
+    const id = platform['п/п'];
+    const state = platformStates[id];
+    
+    if (state.newProduct || state.knownProduct) {
+        submissionData.platforms.push({
+            id: id,
+            site: platform['Сайт'],
+            category: platform['Категория'],
+            newProduct: state.newProduct,
+            knownProduct: state.knownProduct,
+            hint: state.hintShown ? HINTS_MAP[id] : null
         });
+    }
+    
+    // Формируем списки площадок для отправки
+    if (state.newProduct) {
+        submissionData.newProductLaunchPlatforms.push(platform['Сайт']);
+    }
+    if (state.knownProduct) {
+        submissionData.wellKnownProductPlatforms.push(platform['Сайт']);
+    }
+    if (state.hintShown && HINTS_MAP[id]) {
+        submissionData.selectedHints.push(HINTS_MAP[id]);
+    }
+});
         
         // Показываем состояние загрузки
         const submitButton = document.getElementById('submitSolution');
