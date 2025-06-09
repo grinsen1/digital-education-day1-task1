@@ -674,10 +674,10 @@ PLATFORMS_DATA.forEach(platform => {
     
     // Формируем списки площадок для отправки
     if (state.newProduct) {
-        submissionData.newProductLaunchPlatforms.push(platform['Сайт']);
+        submissionData.newProductLaunchPlatforms.push(id);
     }
     if (state.knownProduct) {
-        submissionData.wellKnownProductPlatforms.push(platform['Сайт']);
+        submissionData.wellKnownProductPlatforms.push(id);
     }
     if (state.hintShown && HINTS_MAP[id]) {
         submissionData.selectedHints.push(HINTS_MAP[id]);
