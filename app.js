@@ -683,7 +683,7 @@ PLATFORMS_DATA.forEach(platform => {
         submissionData.selectedHints.push(HINTS_MAP[id]);
     }
 });
-        
+        console.log('Отправляемые данные:', JSON.stringify(submissionData, null, 2));
         // Показываем состояние загрузки
         const submitButton = document.getElementById('submitSolution');
         const originalText = submitButton.textContent;
