@@ -1410,7 +1410,6 @@ select.form-control {
 .data-table td:nth-child(4) {
     width: 120px; /* Фиксированная ширина для столбца "Формат" */
     word-wrap: break-word;
-    word-break: break-all;
     white-space: normal;
     vertical-align: top;
     padding: 8px;
