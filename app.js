@@ -568,6 +568,22 @@ function createTableRow(platform) {
         row.appendChild(cell);
     });
     
+    // НОВЫЙ СТОЛБЕЦ: Показать формат
+    const showFormatCell = document.createElement('td');
+    showFormatCell.className = 'show-format-cell';
+    const showFormatLink = document.createElement('a');
+    showFormatLink.className = 'show-format-link';
+    showFormatLink.textContent = 'показать формат';
+    showFormatLink.href = '#';
+    showFormatLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        showFormatModal(id, platform['Сайт']);
+    });
+    showFormatCell.appendChild(showFormatLink);
+    row.appendChild(showFormatCell);
+    
+    // Остальные столбцы (чекбоксы и подсказки) остаются без изменений...
+    
     // Чекбокс "Запуск нового продукта"
     const newProductCell = document.createElement('td');
     newProductCell.className = 'checkbox-cell';
@@ -755,3 +771,74 @@ window.MediaPlanningApp = {
     renderTable,
     showStatusMessage
 };
+// Функции модального окна для показа форматов
+function createModal() {
+    const modal = document.createElement('div');
+    modal.id = 'formatModal';
+    modal.className = 'modal';
+    modal.innerHTML = `
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <img class="modal-image" id="modalImage" src="" alt="Формат рекламы">
+            <div class="modal-caption" id="modalCaption"></div>
+        </div>
+    `;
+    document.body.appendChild(modal);
+    
+    // Обработчик закрытия по клику на X
+    modal.querySelector('.close').addEventListener('click', closeModal);
+    
+    // Обработчик закрытия по клику вне изображения
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            closeModal();
+        }
+    });
+    
+    return modal;
+}
+
+function showFormatModal(platformId, siteName) {
+    let modal = document.getElementById('formatModal');
+    if (!modal) {
+        modal = createModal();
+    }
+    
+    const modalImage = document.getElementById('modalImage');
+    const modalCaption = document.getElementById('modalCaption');
+    
+    // Устанавливаем путь к изображению
+    const imagePath = `/screens/${platformId}.png`;
+    modalImage.src = imagePath;
+    modalCaption.textContent = `Формат рекламы для ${siteName}`;
+    
+    // Обработка ошибки загрузки изображения
+    modalImage.onerror = function() {
+        modalImage.src = '/screens/placeholder.png'; // Заглушка если изображение не найдено
+        modalCaption.textContent = `Формат для ${siteName} (изображение недоступно)`;
+    };
+    
+    modal.style.display = 'block';
+    
+    // Анимация появления
+    setTimeout(() => {
+        modal.classList.add('show');
+    }, 10);
+}
+
+function closeModal() {
+    const modal = document.getElementById('formatModal');
+    if (modal) {
+        modal.classList.remove('show');
+        setTimeout(() => {
+            modal.style.display = 'none';
+        }, 300);
+    }
+}
+
+// Закрытие модального окна по ESC
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        closeModal();
+    }
+});п
