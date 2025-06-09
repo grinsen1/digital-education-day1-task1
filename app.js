@@ -1,6 +1,6 @@
 // Конфигурация приложения
 const CONFIG = {
-    webAppUrl: "https://script.google.com/macros/s/AKfycbzg30s4bfUmnMi7cYvf2aEp9TaR12NNff-IynB9QPWDENISoRDerRGIyrmRAYaudW6zYQ/exec"
+    webAppUrl: "https://script.google.com/macros/s/AKfycbz41O-_2bW-YPsbzb7npO6FcdeEiLhWVbgEn_-1aIZzI6Gu2TAHkYKJvieuqTeqEey7qQ/exec"
 };
 
 // Данные площадок
