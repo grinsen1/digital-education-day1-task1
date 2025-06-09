@@ -808,7 +808,7 @@ function showFormatModal(platformId, siteName) {
     const modalCaption = document.getElementById('modalCaption');
     
     // Устанавливаем путь к изображению
-    const imagePath = `/screens/${platformId}.png`;
+    const imagePath = `/digital-education-day1-task1/screens/${platformId}.png`;
     modalImage.src = imagePath;
     modalCaption.textContent = `Формат рекламы для ${siteName}`;
     
